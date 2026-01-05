@@ -3,6 +3,7 @@ import express, { Application, Request, Response } from 'express';
 import { connectDatabase } from './config/database';
 import { config } from './config/environment';
 
+
 const app: Application = express();
 const port = config.port;
 
