@@ -1,10 +1,19 @@
 import { Company } from '../database/models/company';
 
 export class CompanyService {
-  async createCompany(companyData: any) {
+async createCompany(companyData: any) {
+  try {
     const company = await Company.create(companyData);
-    return company;
+    return {
+      message: 'Company successfully created!',
+      company: company, 
+    };
+  } catch (error: any) {
+
+    throw new Error(`Error creating company: ${error.message}`);
   }
+}
+
 
   async getCompanyById(companyId: string) {
     const company = await Company.findByPk(companyId);

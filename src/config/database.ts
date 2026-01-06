@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import { config } from './environment';
-
+import { initModels } from '../database/models/index'; 
 
 const sequelize = new Sequelize(
     config.database.name,
@@ -9,24 +9,18 @@ const sequelize = new Sequelize(
     {
         host: config.database.host,
         port: config.database.port,
-        dialect: config.database.dialect,
+        dialect: config.database.dialect as any,
         logging: config.env === 'development' ? console.log : false,
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000
-        }
     }
 );
+
+
+export const db = initModels(sequelize);
 
 export const connectDatabase = async () => {
     try {
         await sequelize.authenticate();
         console.log('✅ PostgreSQL Database connected successfully.');
-        
-       
-        
     } catch (error) {
         console.error('❌ Unable to connect to the database:', error);
         throw error;

@@ -37,7 +37,7 @@ export const initTraineeModel = (sequelize: Sequelize) => {
         allowNull: true,
       },
       gender: {
-        type: DataTypes.ENUM('Male', 'Female', 'Other', 'Prefer not to say'),
+        type: DataTypes.ENUM('Male', 'Female', 'Other'),
         allowNull: true,
       },
       location: {

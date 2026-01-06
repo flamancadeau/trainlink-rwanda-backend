@@ -4,19 +4,19 @@ import { Trainee } from '../database/models/trainee';
 
 export class ApplicationService {
   async createApplication(applicationData: any) {
-    // Check if internship exists
+
     const internship = await Internship.findByPk(applicationData.internshipId);
     if (!internship) {
       throw new Error('Internship not found');
     }
 
-    // Check if trainee exists
+  
     const trainee = await Trainee.findByPk(applicationData.traineeId);
     if (!trainee) {
       throw new Error('Trainee not found');
     }
 
-    // Check if already applied
+  
     const existingApplication = await Application.findOne({
       where: {
         traineeId: applicationData.traineeId,

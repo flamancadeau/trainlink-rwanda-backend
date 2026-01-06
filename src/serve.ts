@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express, { Application, Request, Response } from 'express';
 import { connectDatabase } from './config/database';
 import { config } from './config/environment';
+import mainRoute from './routes';
 
 
 const app: Application = express();
@@ -11,6 +12,7 @@ const port = config.port;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/v1",mainRoute);
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
