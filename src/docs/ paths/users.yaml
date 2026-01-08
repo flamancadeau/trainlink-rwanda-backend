@@ -1,0 +1,183 @@
+/user:
+  post:
+    summary: Register a new user
+    tags:
+      - Users
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../components.yaml#/components/schemas/User"
+    responses:
+      201:
+        description: User registered successfully
+        content:
+          application/json:
+            schema:
+              $ref: "../components.yaml#/components/schemas/User"
+      400:
+        description: Bad request
+
+  delete:
+    summary: Delete authenticated user account
+    tags:
+      - Users
+    security:
+      - bearerAuth: []
+    responses:
+      204:
+        description: User account deleted successfully
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "Invalid or missing token"
+      404:
+        description: User not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "User not found"
+
+/user/login:
+  post:
+    summary: User login
+    tags:
+      - Users
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+                format: email
+                example: "john@example.com"
+              password:
+                type: string
+                example: "password123"
+    responses:
+      200:
+        description: Login successful
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      401:
+        description: Invalid credentials
+
+/user/profile:
+  get:
+    summary: Get authenticated user profile
+    tags:
+      - Users
+    security:
+      - bearerAuth: []
+    responses:
+      200:
+        description: User profile
+        content:
+          application/json:
+            schema:
+              $ref: "../components.yaml#/components/schemas/User"
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "No token provided"
+      404:
+        description: User not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "User not found"
+
+  put/{id}:
+    summary: Update authenticated user profile
+    tags:
+      - Users
+    security:
+      - bearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../components.yaml#/components/schemas/User"
+    responses:
+      200:
+        description: User profile updated successfully
+        content:
+          application/json:
+            schema:
+              $ref: "../components.yaml#/components/schemas/User"
+      400:
+        description: Bad request
+      401:
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "Invalid or missing token"
+      404:
+        description: User not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "User not found"
+
+/users/{id}:
+  delete:
+    summary: Delete user account by ID (admin)
+    tags:
+      - Users
+    security:
+      - bearerAuth: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    responses:
+      204:
+        description: User account deleted successfully
+      401:
+        description: Unauthorized
+      404:
+        description: User not found

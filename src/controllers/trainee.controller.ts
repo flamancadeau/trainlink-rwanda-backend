@@ -1,75 +1,101 @@
-import { Request, Response } from 'express';
-import { TraineeService } from '../services/trainee.service';
-import { createTraineeSchema, updateTraineeSchema } from '../validators/trainee.validation';
+import { Request, Response } from "express";
+import { TraineeService } from "../services/trainee.service";
+import {
+  createTraineeSchema,
+  updateTraineeSchema,
+} from "../validators/trainee.validation";
+import { successResponse, AppError } from "../utils";
 
 const traineeService = new TraineeService();
 
 export class TraineeController {
   async createTrainee(req: Request, res: Response) {
-    try {
-      const { error } = createTraineeSchema.validate(req.body);
-      if (error) {
-        return res.status(400).json({ error: error.details[0].message });
-      }
-
-      const trainee = await traineeService.createTrainee(req.body);
-      res.status(201).json(trainee);
-    } catch (error: any) {
-      res.status(400).json({ error: error.message });
+    const { error } = createTraineeSchema.validate(req.body);
+    if (error) {
+      throw new AppError(error.details[0].message, 400);
     }
+
+    const trainee = await traineeService.createTrainee(req.body);
+
+    return successResponse(res, {  
+      statusCode: 201,
+      message: "Trainee created successfully",
+      data: trainee,
+    });
   }
 
   async getTraineeById(req: Request, res: Response) {
-    try {
-      const trainee = await traineeService.getTraineeById(req.params.id);
-      res.status(200).json(trainee);
-    } catch (error: any) {
-      res.status(404).json({ error: error.message });
+    const trainee = await traineeService.getTraineeById(req.params.id);
+
+    if (!trainee) {
+      throw new AppError("Trainee not found", 404);
     }
+
+    return successResponse(res, {
+      data: trainee,
+      message: "Trainee retrieved successfully",
+    });
   }
 
   async getAllTrainees(req: Request, res: Response) {
-    try {
-      const trainees = await traineeService.getAllTrainees();
-      res.status(200).json(trainees);
-    } catch (error: any) {
-      res.status(500).json({ error: error.message });
-    }
+    const trainees = await traineeService.getAllTrainees();
+
+    return successResponse(res, {
+      data: trainees,
+      message: "Trainees retrieved successfully",
+    });
   }
 
   async updateTrainee(req: Request, res: Response) {
-    try {
-      const { error } = updateTraineeSchema.validate(req.body);
-      if (error) {
-        return res.status(400).json({ error: error.details[0].message });
-      }
-
-      const trainee = await traineeService.updateTrainee(req.params.id, req.body);
-      res.status(200).json(trainee);
-    } catch (error: any) {
-      res.status(400).json({ error: error.message });
+    const { error } = updateTraineeSchema.validate(req.body);
+    if (error) {
+      throw new AppError(error.details[0].message, 400);
     }
+
+    const trainee = await traineeService.updateTrainee(req.params.id, req.body);
+
+    if (!trainee) {
+      throw new AppError("Trainee not found", 404);
+    }
+
+    return successResponse(res, {
+      message: "Trainee updated successfully",
+      data: trainee,
+    });
   }
 
-  async uploadResume(req: any, res: Response) {
-    try {
-      if (!req.file) {
-        return res.status(400).json({ error: 'No file uploaded' });
-      }
-
-      const trainee = await traineeService.uploadResume(req.params.id, req.file.path);
-      res.status(200).json(trainee);
-    } catch (error: any) {
-      res.status(400).json({ error: error.message });
+  async uploadResume(
+    req: Request & { file?: Express.Multer.File },
+    res: Response
+  ) {
+    if (!req.file) {
+      throw new AppError("No file uploaded", 400);
     }
+
+    const trainee = await traineeService.uploadResume(
+      req.params.id,
+      req.file.path
+    );
+
+    if (!trainee) {
+      throw new AppError("Trainee not found", 404);
+    }
+
+    return successResponse(res, {
+      message: "Resume uploaded successfully",
+      data: trainee,
+    });
   }
 
   async deleteTrainee(req: Request, res: Response) {
-    try {
-      const result = await traineeService.deleteTrainee(req.params.id);
-      res.status(200).json(result);
-    } catch (error: any) {
-      res.status(404).json({ error: error.message });
+    const result = await traineeService.deleteTrainee(req.params.id);
+
+    if (!result) {
+      throw new AppError("Trainee not found", 404);
     }
+
+    return successResponse(res, {
+      message: "Trainee deleted successfully",
+    });
   }
 }

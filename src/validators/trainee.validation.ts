@@ -17,7 +17,7 @@ export const updateTraineeSchema = Joi.object({
   firstName: Joi.string().min(2).max(50).optional(),
   lastName: Joi.string().min(2).max(50).optional(),
   dateOfBirth: Joi.date().optional(),
-  gender: Joi.string().valid('Male', 'Female', 'Other', 'Prefer not to say').optional(),
+  gender: Joi.string().valid('Male', 'Female', 'Other').optional(),
   location: Joi.string().optional(),
   educationLevel: Joi.string().valid('High School', 'Bachelor', 'Master', 'PhD', 'Other').optional(),
   skills: Joi.array().items(Joi.string()).optional(),

@@ -1,0 +1,178 @@
+# docs/components.yaml
+components:
+
+  securitySchemes:              
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+
+    User:
+      type: object
+      properties:
+        userId:
+          type: string
+          format: uuid
+          example: "a1b2c3d4-5678-90ab-cdef-1234567890ab"
+        username:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          example: "john@example.com"
+        role:
+          type: string
+          enum: [Trainee, Company]
+          example: "Trainee"
+        phoneNumber:
+          type: string
+          example: "+1234567890"
+        address:
+          type: string
+          example: "123 Main Street"
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Trainee:
+      type: object
+      properties:
+        traineeId:
+          type: string
+          format: uuid
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        gender:
+          type: string
+          enum: [Male, Female, Other]
+        location:
+          type: string
+        educationLevel:
+          type: string
+          enum: [High School, Bachelor, Master, PhD, Other]
+        skills:
+          type: array
+          items:
+            type: string
+        resumeUrl:
+          type: string
+          nullable: true
+        interests:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Company:
+      type: object
+      properties:
+        companyId:
+          type: string
+        companyName:
+          type: string
+        companyDescription:
+          type: string
+          nullable: true
+        industryType:
+          type: string
+          enum: [Tech, Finance, Health, Marketing, Education, Other]
+        companyLogoUrl:
+          type: string
+          nullable: true
+        companyWebsiteUrl:
+          type: string
+          nullable: true
+        companyLocation:
+          type: string
+          nullable: true
+        contactEmail:
+          type: string
+          nullable: true
+        contactPhone:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Internship:
+      type: object
+      properties:
+        internshipId:
+          type: string
+        companyId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        startDate:
+          type: string
+          format: date
+        endDate:
+          type: string
+          format: date
+        applicationDeadline:
+          type: string
+          format: date
+        skillsRequired:
+          type: array
+          items:
+            type: string
+        companyWebsiteUrl:
+          type: string
+          nullable: true
+        internshipImageUrl:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Application:
+      type: object
+      properties:
+        applicationId:
+          type: string
+        traineeId:
+          type: string
+        internshipId:
+          type: string
+        status:
+          type: string
+          enum: [Pending, Accepted, Rejected]
+        dateApplied:
+          type: string
+          format: date-time
+        resumeUrl:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
