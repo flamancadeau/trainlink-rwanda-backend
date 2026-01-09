@@ -1,0 +1,124 @@
+paths:
+  /trainee/{id}:
+    put:
+      summary: Update trainee profile
+      tags:
+        - Trainees
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "../components.yaml#/components/schemas/Trainee"
+      responses:
+        200:
+          description: Trainee profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "../components.yaml#/components/schemas/Trainee"
+        400:
+          description: Bad request (e.g., invalid data format or missing required fields)
+        401:
+          description: Unauthorized (invalid token or no token provided)
+        404:
+          description: Trainee not found
+        500:
+          description: Internal server error
+
+    get:
+      summary: Get trainee by ID
+      tags:
+        - Trainees
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Trainee profile retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: "../components.yaml#/components/schemas/Trainee"
+        401:
+          description: Unauthorized (invalid token or no token provided)
+        404:
+          description: Trainee not found
+        500:
+          description: Internal server error
+
+    delete:
+      summary: Delete trainee account
+      tags:
+        - Trainees
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: Trainee deleted successfully (no content returned)
+        401:
+          description: Unauthorized (invalid token or no token provided)
+        404:
+          description: Trainee not found
+        500:
+          description: Internal server error
+
+  /trainee/{id}/resume:
+    post:
+      summary: Upload trainee resume
+      tags:
+        - Trainees
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                resume:
+                  type: string
+                  format: binary
+      responses:
+        200:
+          description: Resume uploaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: "../components.yaml#/components/schemas/Trainee"
+        400:
+          description: Bad request (e.g., invalid file format or missing file)
+        401:
+          description: Unauthorized (invalid token or no token provided)
+        404:
+          description: Trainee not found
+        415:
+          description: Unsupported media type (if the file is not a supported type)
+        500:
+          description: Internal server error

@@ -12,8 +12,7 @@ const options: swaggerJSDoc.Options = {
     servers: [{ url: 'http://localhost:5000/api/v1' }],
   },
   apis: [
-    // path.join(__dirname, '../controllers/*.ts'), // for JSDoc comments
-    path.join(__dirname, '../docs/**/*.yaml'),  // optional YAML modular files
+    path.join(__dirname, '../docs/**/*.yaml'),  
   ],
 };
 

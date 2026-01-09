@@ -19,35 +19,35 @@
       400:
         description: Bad request
 
-  delete:
-    summary: Delete authenticated user account
-    tags:
-      - Users
-    security:
-      - bearerAuth: []
-    responses:
-      204:
-        description: User account deleted successfully
-      401:
-        description: Unauthorized
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                error:
-                  type: string
-                  example: "Invalid or missing token"
-      404:
-        description: User not found
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                error:
-                  type: string
-                  example: "User not found"
+  # delete:
+  #   summary: Delete authenticated user account
+  #   tags:
+  #     - Users
+  #   security:
+  #     - bearerAuth: []
+  #   responses:
+  #     204:
+  #       description: User account deleted successfully
+  #     401:
+  #       description: Unauthorized
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               error:
+  #                 type: string
+  #                 example: "Invalid or missing token"
+  #     404:
+  #       description: User not found
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               error:
+  #                 type: string
+  #                 example: "User not found"
 
 /user/login:
   post:
@@ -161,7 +161,7 @@
                   type: string
                   example: "User not found"
 
-/users/{id}:
+/user/{id}:
   delete:
     summary: Delete user account by ID (admin)
     tags:
