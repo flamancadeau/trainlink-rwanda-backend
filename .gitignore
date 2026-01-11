@@ -8,3 +8,9 @@ logs/
 coverage/
 .vscode/
 .idea/
+# Coverage
+coverage/
+*.lcov
+
+# Keep the badges
+!coverage/badges/

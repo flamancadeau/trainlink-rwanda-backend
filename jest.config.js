@@ -9,11 +9,32 @@ module.exports = {
     }],
   },
   moduleNameMapper: {
-    // This forces Jest to use the CommonJS entry point for uuid
+    
     '^uuid$': require.resolve('uuid').replace('dist-node/index.js', 'dist/index.js') || 'uuid'
   },
-  // We need to tell Jest to actually transform sequelize if it's using ESM internally
+  
   transformIgnorePatterns: [
     'node_modules/(?!(uuid|sequelize)/)'
   ],
+  
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/**/*.d.ts',
+    '!src/database/migrations/**',
+    '!src/database/seeders/**',
+    '!src/serve.ts',
+    '!src/sub.ts',
+    '!src/sum.ts',
+  ],
+  coverageDirectory: 'coverage',
+  coverageReporters: ['json', 'lcov', 'text', 'clover', 'json-summary'],
+    coverageThreshold: {
+    global: {
+      branches: 5,
+      functions: 2,
+      lines: 5,
+      statements: 5,
+    },
+  },
+
 };
