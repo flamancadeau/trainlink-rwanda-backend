@@ -4,6 +4,13 @@
 [![Coverage](https://img.shields.io/badge/coverage-check%20circleci-blue?style=flat-square)](https://circleci.com/gh/flamancadeau/trainlink-rwanda-backend)
 
 
+<!-- Detailed Coverage Badges -->
+![Statements](https://img.shields.io/badge/dynamic/json?url=https://coveralls.io/github/flamancadeau/trainlink-rwanda-backend.json?branch=main&label=Coverage:%20Statements&query=$.covered_percent&suffix=%&color=orange&style=flat-square)
+![Branches](https://img.shields.io/badge/dynamic/json?url=https://coveralls.io/github/flamancadeau/trainlink-rwanda-backend.json?branch=main&label=Coverage:%20Branches&query=$.covered_percent&suffix=%&color=orange&style=flat-square)
+![Functions](https://img.shields.io/badge/dynamic/json?url=https://coveralls.io/github/flamancadeau/trainlink-rwanda-backend.json?branch=main&label=Coverage:%20Functions&query=$.covered_percent&suffix=%&color=red&style=flat-square)
+![Lines](https://img.shields.io/badge/dynamic/json?url=https://coveralls.io/github/flamancadeau/trainlink-rwanda-backend.json?branch=main&label=Coverage:%20Lines&query=$.covered_percent&suffix=%&color=orange&style=flat-square)
+
+
 This is the backend service for the **TrainLink Rwanda** application, which connects trainees with internship opportunities. This API is built with **Node.js**, **TypeScript**, **Express**, **PostgreSQL**, and uses **Cloudinary** for image uploads and **Nodemailer** for email notifications.
 
 ## 📋 Table of Contents
