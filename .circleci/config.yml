@@ -29,16 +29,12 @@ jobs:
           command: npm run test:coverage
       
       - run:
-          name: Generate Coverage Badges
-          command: npm run generate:badges
+          name: Upload Coverage to Coveralls
+          command: npm run coveralls
       
       - store_artifacts:
           path: coverage
           destination: coverage-report
-      
-      - store_artifacts:
-          path: badges
-          destination: badges
       
       - store_test_results:
           path: coverage
