@@ -34,5 +34,13 @@ module.exports = {
       statements: 5,
     },
   },
+    //  JUnit reporter
+  reporters: [
+    'default',
+    ['jest-junit', {
+      outputDirectory: 'test-results/junit',
+      outputName: 'results.xml',
+    }]
+  ],
 
 };
