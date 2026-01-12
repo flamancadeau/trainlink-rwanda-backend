@@ -1,9 +1,8 @@
 # TrainLink Rwanda - Backend API
 
-[![Coverage: Statements](./coverage/badges/badge-statements.svg)](./coverage/lcov-report/index.html)
-[![Coverage: Branches](./coverage/badges/badge-branches.svg)](./coverage/lcov-report/index.html)
-[![Coverage: Functions](./coverage/badges/badge-functions.svg)](./coverage/lcov-report/index.html)
-[![Coverage: Lines](./coverage/badges/badge-lines.svg)](./coverage/lcov-report/index.html)
+[![CircleCI](https://img.shields.io/circleci/build/github/flamancadeau/trainlink-rwanda-backend/main?style=flat-square)](https://circleci.com/gh/flaman/trainlink-rwanda-backend)
+[![Coverage](https://img.shields.io/badge/coverage-check%20circleci-blue?style=flat-square)](https://circleci.com/gh/flamancadeau/trainlink-rwanda-backend)
+
 
 This is the backend service for the **TrainLink Rwanda** application, which connects trainees with internship opportunities. This API is built with **Node.js**, **TypeScript**, **Express**, **PostgreSQL**, and uses **Cloudinary** for image uploads and **Nodemailer** for email notifications.
 
