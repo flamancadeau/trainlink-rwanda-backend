@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
    "scripts": {
-    "test": "jest",
+    "test": "jest --coverage ",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --coverageDirectory='coverage'",
+    "test:coverage": "jest --coverageDirectory='coverage'",
     "test:badges": "npm run test:coverage && node scripts/generate-badges.js",
     "generate:badges": "node scripts/generate-badges.js",
     "start": "ts-node src/serve.ts",

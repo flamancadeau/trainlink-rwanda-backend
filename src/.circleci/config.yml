@@ -1,7 +1,49 @@
+version: 2.1
+
 orbs:
-  codecov: codecov/codecov@5
+  node: circleci/node@5.1.0
+
+jobs:
+  test:
+    docker:
+      - image: cimg/node:18.17
+    steps:
+      - checkout
+      
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-
+      
+      - run:
+          name: Install Dependencies
+          command: npm ci
+      
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
+      
+      - run:
+          name: Run Tests with Coverage
+          command: npm run test:coverage
+      
+      - run:
+          name: Generate Coverage Badges
+          command: npm run generate:badges
+      
+      - store_artifacts:
+          path: coverage
+          destination: coverage-report
+      
+      - store_artifacts:
+          path: badges
+          destination: badges
+      
+      - store_test_results:
+          path: coverage
+
 workflows:
-  upload-to-codecov:
+  test-workflow:
     jobs:
-      - checkout 
-      - codecov/upload
+      - test

@@ -23,8 +23,6 @@ module.exports = {
     '!src/database/migrations/**',
     '!src/database/seeders/**',
     '!src/serve.ts',
-    '!src/sub.ts',
-    '!src/sum.ts',
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'json-summary'],
