@@ -23,6 +23,8 @@ module.exports = {
     '!src/database/migrations/**',
     '!src/database/seeders/**',
     '!src/serve.ts',
+    '!src/sub.ts',
+    '!src/sum.ts',
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'json-summary'],
@@ -34,13 +36,5 @@ module.exports = {
       statements: 5,
     },
   },
-    //  JUnit reporter
-  reporters: [
-    'default',
-    ['jest-junit', {
-      outputDirectory: 'test-results/junit',
-      outputName: 'results.xml',
-    }]
-  ],
 
 };
