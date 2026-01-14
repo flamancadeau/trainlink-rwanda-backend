@@ -133,32 +133,6 @@ npm test
 npm run test:watch
 ```
 
-### Generate coverage report
-```bash
-npm run test:coverage
-```
-
-Then open `coverage/lcov-report/index.html` in your browser to view detailed coverage.
-
-### Update coverage badges
-```bash
-npm run test:badges
-```
-
-This will:
-1. Run all tests with coverage
-2. Generate/update the coverage badges in the README
-
-### Coverage Goals
-
-We aim for:
-- ✅ **Statements**: 50%+
-- ✅ **Branches**: 50%+
-- ✅ **Functions**: 50%+
-- ✅ **Lines**: 50%+
-
----
-
 ## 📚 API Endpoints
 
 ### Authentication
