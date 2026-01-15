@@ -3,6 +3,17 @@
 [![CircleCI](https://img.shields.io/circleci/build/github/flamancadeau/trainlink-rwanda-backend/main?style=flat-square)](https://circleci.com/gh/flaman/trainlink-rwanda-backend)
 [![Coverage](https://img.shields.io/badge/coverage-check%20circleci-blue?style=flat-square)](https://circleci.com/gh/flamancadeau/trainlink-rwanda-backend)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=bugs)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=flamancadeau_trainlink-rwanda-backend&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=flamancadeau_trainlink-rwanda-backend)
+
+
 This is the backend service for the **TrainLink Rwanda** application, which connects trainees with internship opportunities. This API is built with **Node.js**, **TypeScript**, **Express**, **PostgreSQL**, and uses **Cloudinary** for image uploads and **Nodemailer** for email notifications.
 
 ## 📋 Table of Contents
