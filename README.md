@@ -1,5 +1,6 @@
 # TrainLink Rwanda - Backend API
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9fcbeba46daa49a9b9bfd09f5897dd29)](https://app.codacy.com/gh/flamancadeau/trainlink-rwanda-backend?utm_source=github.com&utm_medium=referral&utm_content=flamancadeau/trainlink-rwanda-backend&utm_campaign=Badge_Grade)
 [![CircleCI](https://img.shields.io/circleci/build/github/flamancadeau/trainlink-rwanda-backend/main?style=flat-square)](https://circleci.com/gh/flaman/trainlink-rwanda-backend)
 [![Coverage](https://img.shields.io/badge/coverage-check%20circleci-blue?style=flat-square)](https://circleci.com/gh/flamancadeau/trainlink-rwanda-backend)
 
