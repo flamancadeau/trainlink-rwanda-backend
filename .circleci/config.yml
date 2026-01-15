@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.1.0
+  sonarcloud: sonarsource/sonarcloud@2.0.0 
 
 jobs:
   test:
@@ -28,6 +29,8 @@ jobs:
           name: Run Tests with Coverage
           command: npm run test:coverage
       
+      - sonarcloud/scan
+      
       - run:
           name: Upload Coverage to Coveralls
           command: npm run coveralls
@@ -39,4 +42,5 @@ jobs:
 workflows:
   test-workflow:
     jobs:
-      - test
+      - test:
+          context: sonarcloud

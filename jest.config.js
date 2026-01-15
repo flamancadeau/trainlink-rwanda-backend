@@ -22,9 +22,7 @@ module.exports = {
     '!src/**/*.d.ts',
     '!src/database/migrations/**',
     '!src/database/seeders/**',
-    '!src/serve.ts',
-    '!src/sub.ts',
-    '!src/sum.ts',
+    '!src/serve.ts'
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'json-summary'],
